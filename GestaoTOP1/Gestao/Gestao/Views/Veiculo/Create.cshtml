@@ -1,0 +1,244 @@
+﻿@model Gestao.Models.Veiculo
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+
+<h1>Create</h1>
+
+<h4>Veiculo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <style>
+                .hidden {
+                    display: none;
+                }
+
+                img {
+                    max-width: 300px;
+                    height: auto;
+                }
+
+                #campoSaida {
+                    font-size: 34px;
+                    position: relative;
+                    z-index: 2;
+                    background-color: transparent;
+                    left: 18px; /* Ajuste para 5cm (189px é aproximadamente 5cm) */
+                    top: -4px; /* Move o texto 4cm para cima */
+                }
+
+                #UF {
+                    font-size: 10px;
+                    position: relative;
+                    z-index: 2;
+                    background-color: transparent;
+                    left: 50px; /* Ajuste para 5cm (189px é aproximadamente 5cm) */
+                    top: -93px; /* Move o texto 4cm para cima */
+                }
+
+                #image1 {
+                    position: relative;
+                    top: 45px;
+                    left: 0;
+                    z-index: 1;
+                }
+
+                #image2 {
+                    position: relative;
+                    top: 45px;
+                    left: 0;
+                    z-index: 1;
+                }
+
+            </style>
+
+
+                <br>
+                <img id="image1" class="hidden" src="/Img/imagem1.png" alt="Placa Antiga">
+                <img id="image2" class="hidden" src="/Img/imagem2.png" alt="Placa Mercosul">
+                <br>
+
+
+
+
+                <label id="campoSaida" class="hidden"></label>
+                <br>
+                <br>
+                <!-- <label for="thiago">Thiago</label> -->
+                <label id="UF">SP - Ribeirão Preto</label>
+                <br>
+                <br>
+                <input type="text" id="licensePlate" placeholder="Insira a placa" maxlength="8" oninput="validarPlaca(this.value)">
+
+                <br>
+
+                <script>
+                    function validarPlaca(texto) {
+                        // Converte o texto para maiúsculas antes de validar
+                        texto = texto.toUpperCase();
+
+                        // Remove caracteres não permitidos
+                        texto = texto.replace(/[^a-zA-Z0-9]/g, '');
+
+                        // Garante que os três primeiros caracteres são letras
+                        var tresPrimeiros = texto.substring(0, 3).replace(/[^a-zA-Z]/g, '');
+
+                        // Garante que o quarto caractere é um número
+                        var quartoDigito = texto.charAt(3).replace(/[^0-9]/g, '');
+
+                        // // Garante que o quinto caractere é uma letra ou número
+                        // var quintoDigito = texto.charAt(4).replace(/[^a-zA-Z0-9]/g, '');
+
+                        // Garante que o quinto caractere é uma letra ou número
+                        var quintoDigito = texto.charAt(4).replace(/[^a-jA-J0-9]/g, '');
+
+
+                        // Garante que o sexto e o sétimo caracteres são números
+                        var sextoESetimoDigitos = texto.substring(5).replace(/[^0-9]/g, '');
+
+                        // Garante que o oitavo caractere é uma letra ou número
+                        var oitavoDigito = texto.charAt(8).replace(/[^a-zA-Z0-9]/g, '');
+
+                        // Adiciona ou remove o hífen visualmente após o terceiro dígito dependendo do contexto
+                        var placaFormatada = tresPrimeiros + (quartoDigito ? '-' : '') + quartoDigito + quintoDigito + sextoESetimoDigitos + oitavoDigito;
+
+                        // Atualiza o valor do campo de entrada com os caracteres ajustados
+                        document.getElementById('licensePlate').value = placaFormatada;
+
+                        // Expressão regular para verificar se o texto corresponde ao padrão AAA0000 ou AAA0A00
+                        var regex = /^[A-Za-z]{3}-\d{4}$|^[A-Za-z]{3}\d[A-Za-z]\d{2}$/;
+
+                        // Verifica se o texto atende à expressão regular e tem no máximo 8 caracteres
+                        if (regex.test(texto) && texto.length <= 8) {
+                            document.getElementById('campoSaida').textContent = texto;
+                        } else {
+                            document.getElementById('campoSaida').textContent = 'inválida';
+                        }
+                    }
+                </script>
+
+                <br>
+
+                <!-- Verifica no input se a placa é Mercosul ou a antiga -->
+                <button onclick="checkPlate()">Verificar</button>
+
+                <script>
+                    // Chama a função checkPlate ao carregar a página
+                    window.onload = function () {
+                        checkPlate();
+                    };
+
+                    function checkPlate() {
+                        const plateInput = document.getElementById('licensePlate').value.toUpperCase();
+                        const image1 = document.getElementById('image1');
+                        const image2 = document.getElementById('image2');
+                        const campoSaida = document.getElementById('campoSaida');
+                        const ufLabel = document.getElementById('UF');
+
+                        const patternAntiga = /[A-Z]{3}-\d{4}/; // AAA0000
+                        const patternMercosul = /[A-Z]{3}-\d[A-Z]\d{2}/; // AAA0A00
+
+                        if (patternAntiga.test(plateInput)) {
+                            image1.classList.remove('hidden');
+                            image2.classList.add('hidden');
+                            campoSaida.innerHTML = '<strong>' + plateInput + '</strong>';
+                            campoSaida.classList.remove('hidden');
+                            ufLabel.innerHTML = 'SP - Ribeirão Preto';
+                        } else if (patternMercosul.test(plateInput)) {
+                            image2.classList.remove('hidden');
+                            image1.classList.add('hidden');
+                            const lastCharacter = plateInput.charAt(5);
+                            if (isNaN(lastCharacter)) {
+                                image1.classList.add('hidden');
+                                image2.classList.remove('hidden');
+                            }
+                            campoSaida.innerHTML = '<strong>' + plateInput.replace('-', '') + '</strong>';
+                            campoSaida.classList.remove('hidden');
+                            ufLabel.innerHTML = '';
+                        } else {
+                            image1.classList.add('hidden');
+                            image2.classList.add('hidden');
+                            campoSaida.classList.add('hidden');
+                            ufLabel.innerHTML = '';
+                        }
+                    }
+                </script>
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="Placa" class="control-label">Placa</label>
+                <input asp-for="Placa" class="form-control" />
+                <span asp-validation-for="Placa" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Marca" class="control-label"></label>
+                <input asp-for="Marca" class="form-control" />
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Modelo" class="control-label"></label>
+                <input asp-for="Modelo" class="form-control" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Cor" class="control-label"></label>
+                <input asp-for="Cor" class="form-control" />
+                <span asp-validation-for="Cor" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="fk_MoradorID" class="control-label">Morador Associado</label>
+                <select asp-for="fk_MoradorID" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Morador, "MoradorID", "Nome"))">
+                </select>
+            </div>
+
+
+
+
+			<br />
+
+
+            <div class="form-group">
+				<input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<br />
+
+<div>
+	<a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
+
+
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

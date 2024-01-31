@@ -1,0 +1,67 @@
+﻿@model Gestao.Models.Morador
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Morador</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome) Completo
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @*             @Html.DisplayNameFor(model => model.Endereco) *@ Endereço
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @*             @Html.DisplayNameFor(model => model.NumeroAP) oi *@ Numero AP
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumeroAP)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @*             @Html.DisplayNameFor(model => model.DataNasc) *@ 	Data de Nascimento
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataNasc)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+
+    </dl>
+</div>
+<div>
+    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model?.MoradorID">Editar</a> |
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>

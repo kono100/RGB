@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <br>
+    <br />
+    <br>
+    <br />
+
+    <header>
+        <h1>Boas-Vindas à Nova Gestão de Condomínio MRV</h1>
+    </header>
+    <br>
+    <br />
+
+    <section>
+        <p>Prezados Moradores,</p>
+        <p>É com grande entusiasmo e comprometimento que damos as boas-vindas à nova gestão de condomínio da MRV! Estamos empolgados por termos a oportunidade de servir a comunidade e contribuir para um ambiente residencial ainda mais harmonioso e bem cuidado.</p>
+        <p>Acreditamos na importância de uma gestão transparente, eficiente e participativa, e estamos comprometidos em trabalhar de mãos dadas com cada um de vocês para garantir que nosso condomínio seja um lugar exemplar para se viver.</p>
+        <p>Nossas metas incluem:</p>
+        <ol>
+            <li><strong>Transparência e Comunicação Aberta:</strong> Manteremos todos informados sobre decisões importantes, eventos e projetos por meio de canais eficientes de comunicação.</li>
+            <li><strong>Manutenção e Melhorias:</strong> Trabalharemos para garantir a manutenção adequada das instalações e buscamos melhorias que tornem nosso condomínio ainda mais agradável.</li>
+            <li><strong>Participação Ativa dos Moradores:</strong> Incentivamos a participação ativa de todos. Sua voz é fundamental para o sucesso do nosso condomínio, e estaremos sempre abertos a sugestões e feedback construtivo.</li>
+        </ol>
+        <p>Estamos aqui para servir e colaborar, então não hesitem em entrar em contato conosco para compartilhar suas ideias, preocupações ou sugestões. Juntos, faremos do nosso condomínio um lugar exemplar para se viver.</p>
+        <p>Agradecemos pela confiança depositada em nossa gestão e estamos ansiosos para construir um futuro brilhante para o Condomínio MRV.</p>
+        <p>Atenciosamente,</p>
+
+    <br>
+    <br />
+    <br>
+    <br />
+
+
+    <br>
+    <br />
+
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+
+    <h3>Bem Vindo ao Site de Gestão de Condominio</h3>
+
+    <br />
+
+    <h5>PAGINA INICIAL</h5>
+
+    <br />
+    <br />
+    <br />
+
+    <p>
+        <br />
+        <br />
+        Tabelas:
+
+        <br />
+        <br />
+        <br />
+
+        Morador
+        <br />
+        ID
+        Nome completo
+        Data de Nascimento
+        Documento de identidade (RG, CPF, etc.)
+        telefone
+        numero da casa
+
+        <br />
+        <br />
+        <br />
+
+
+
+        visitante
+        <br />
+        ID
+        Nome completo
+        Data de Nascimento
+        Documento de identidade (RG, CPF, etc.)
+        Data de Visita
+        Morador visitado (referência à tabela Morador)
+        Observações (o que foi fazer la (Opcnional))
+
+        <br />
+        <br />
+        <br />
+
+
+        veiculo
+        <br />
+        ID
+        Marca
+        Modelo
+        Placa
+        Morador proprietário (referência à tabela Morador)
+        Morador visitante (referência à tabela visitante)
+
+
+        <br />
+        <br />    <br />
+
+        Reservas
+        <br />
+
+        ID
+        Data e hora da reserva
+        Área reservada (por exemplo, salão de festas, churrasqueira)
+        Morador responsável pela reserva (referência à tabela Morador)
+
+        <br />
+        <br />    <br />
+
+
+        Relacionamentos:
+        Visitante <->
+            Morador (um visitante está associado a um morador específico)
+            Veículo <->
+                Morador (um veículo está associado a um morador)
+                Reservas <->
+                    Morador (um morador é responsável por uma reserva)
+                    <br />
+                    <br />    <br />
+
+                    Essa estrutura permite gerenciar os moradores, visitantes, veículos registrados no condomínio e as reservas de áreas comuns para eventos. O Entity Framework pode auxiliar na interação com o banco de dados para criar, ler, atualizar e excluir registros, além de estabelecer os relacionamentos entre as entidades.
+    </p>
+
+</div>

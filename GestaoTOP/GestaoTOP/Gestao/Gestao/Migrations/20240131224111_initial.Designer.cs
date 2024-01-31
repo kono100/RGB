@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gestao.Migrations
 {
     [DbContext(typeof(IESContext))]
-    [Migration("20231222145028_Initial")]
-    partial class Initial
+    [Migration("20240131224111_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

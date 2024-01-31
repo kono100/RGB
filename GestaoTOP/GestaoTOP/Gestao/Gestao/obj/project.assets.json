@@ -11210,24 +11210,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Bruno\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD:GestaoTOP/Gestao/Gestao/obj/project.assets.json
       "projectUniqueName": "C:\\Users\\User\\Desktop\\test-git\\GestaoTOP\\Gestao\\Gestao\\Gestao.csproj",
       "projectName": "Gestao",
       "projectPath": "C:\\Users\\User\\Desktop\\test-git\\GestaoTOP\\Gestao\\Gestao\\Gestao.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\Desktop\\test-git\\GestaoTOP\\Gestao\\Gestao\\obj\\",
+=======
+      "projectUniqueName": "E:\\projeto japa\\test-git\\GestaoTOP\\GestaoTOP\\Gestao\\Gestao\\Gestao.csproj",
+      "projectName": "Gestao",
+      "projectPath": "E:\\projeto japa\\test-git\\GestaoTOP\\GestaoTOP\\Gestao\\Gestao\\Gestao.csproj",
+      "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
+      "outputPath": "E:\\projeto japa\\test-git\\GestaoTOP\\GestaoTOP\\Gestao\\Gestao\\obj\\",
+>>>>>>> 83b3cb13176d6d5d7a72813c0404a1f8acb45afc:GestaoTOP/GestaoTOP/Gestao/Gestao/obj/project.assets.json
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11235,7 +11238,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11292,7 +11294,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,0 +1,122 @@
+﻿@model Gestao.Models.Morador
+
+@{
+    ViewData["Title"] = "Delete";
+}
+@section styles{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
+}
+
+<h1>Delete</h1>
+
+<div>
+    <h4>Morador</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome) Completo
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @*             @Html.DisplayNameFor(model => model.Endereco) *@ Endereço
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @*             @Html.DisplayNameFor(model => model.NumeroAP) *@ Numero AP
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumeroAP)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @*             @Html.DisplayNameFor(model => model.DataNasc) *@ 	Data de Nascimento
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataNasc)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+
+    </dl>
+
+
+    <div>
+        <a class="btn btn-primary" asp-action="Index">Back to List</a>
+
+
+        <button type="button" class="btn btn-danger" data-toggle="modal"
+                data-target="#modalConfirmationDelete">
+            Remover
+        </button>
+
+    </div>
+
+
+
+    <div class="modal fade" id="modalConfirmationDelete" tabindex="-1" role="dialog"
+         aria-labelledby="deleteModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModal">Apagar Morador</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Excluir Morador @Model.Nome.ToUpper()?</p>
+                </div>
+                <div class="modal-footer">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="MoradorID" />
+                        <input type="submit" value="Remover" class="btn btn-warning" />
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @* <form asp-action="Delete">
+    <input type="hidden" asp-for="MoradorID" />
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-action="Index">Back to List</a>
+    </form> *@
+</div>
+
+@section Scripts {
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
+}
+

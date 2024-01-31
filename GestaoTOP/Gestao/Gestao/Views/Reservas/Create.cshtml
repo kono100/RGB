@@ -1,0 +1,102 @@
+﻿@model Gestao.Models.Reservas
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Reservas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label">Duração da Reserva</label>
+                <select asp-for="Nome" class="form-control">
+                    <option value="Area de Festa">Area de Festa</option>
+                    <option value="Area de Churrasco">Area de Churrasco</option>
+                    <option value="Sala de Reunião">Sala de Reunião</option>
+                    <option value="Piscina">Piscina</option>
+                    <option value="Quadra de Esportes">Quadra de Esportes</option>
+                </select>
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DataHoraRes" class="control-label">Data da Reserva</label>
+                <input asp-for="DataHoraRes" class="form-control" />
+                <span asp-validation-for="DataHoraRes" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="DuracaoReserva" class="control-label">Duração da Reserva</label>
+                <select asp-for="DuracaoReserva" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <span asp-validation-for="DuracaoReserva" class="text-danger"></span>
+            </div>
+
+
+
+
+            @*             <div class="form-group">
+            <label asp-for="DuracaoReserva" class="control-label"></label>
+            <input asp-for="DuracaoReserva" class="form-control" />
+            <span asp-validation-for="DuracaoReserva" class="text-danger"></span>
+            </div>
+            *@
+
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="Confirmada">Confirmada</option>
+                    <option value="Pendente">Pendente</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="fk_MoradorID" class="control-label">Morador Associado</label>
+                <select asp-for="fk_MoradorID" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Morador, "MoradorID", "Nome"))">
+                </select>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

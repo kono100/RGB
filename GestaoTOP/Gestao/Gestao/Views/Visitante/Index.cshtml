@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Gestao.Models.Visitante>
+
+@{
+    ViewData["Title"] = "Visitante MRV ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Visitante</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-warning" role="alert">@TempData["Message"]</div>
+}
+
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Criar</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome) do Visitante
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.CPF)
+            </th>
+
+            <th>
+                @* @Html.DisplayNameFor(model => model.DataNasc) *@ Data de Nascimento
+            </th>
+
+
+            <th>
+                @* @Html.DisplayNameFor(model => model.EndDate) *@ Despedida Prevista
+            </th>
+
+@*             <th>
+                @Html.DisplayNameFor(model => model.Observacao)
+            </th> *@
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Morador.Nome) do Morador Associado
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPF)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNasc)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+
+@*                 <td>
+                    @Html.DisplayFor(modelItem => item.Observacao)
+                </td> *@
+
+
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Morador.Nome)
+                </td>
+
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.VisitanteID">Edit</a> |
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.VisitanteID">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.VisitanteID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

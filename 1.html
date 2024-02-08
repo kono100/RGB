@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfico Atualizado</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <canvas id="myChart" width="400" height="200"></canvas>
 
-    test
-    
+  <script>
+    // Substitua isso por sua lógica de obtenção de dados em tempo real
+    function getChartData() {
+      // Exemplo: retorna dados fictícios
+      return [10, 20, 15, 25, 30];
+    }
+
+    // Configuração inicial do gráfico
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Label1', 'Label2', 'Label3', 'Label4', 'Label5'],
+        datasets: [{
+          label: 'Dados em Tempo Real',
+          data: getChartData(),
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Atualiza o gráfico regularmente
+    setInterval(function() {
+      myChart.data.datasets[0].data = getChartData();
+      myChart.update();
+    }, 5000);  // Atualiza a cada 5 segundos (ajuste conforme necessário)
+  </script>
 </body>
 </html>
